@@ -27,11 +27,6 @@ public class F1Service : IF1Service
             var client = new HttpClient();
             var request = new HttpRequestMessage(HttpMethod.Get, $"https://f1api.dev/api/{seasonYear}/drivers");
             var response = await client.SendAsync(request);
-            
-            // if (!response.IsSuccessStatusCode)
-            // {
-            //     throw new HttpRequestException($"API request failed with status {response.StatusCode}");
-            // }
 
             var jsonContent = await response.Content.ReadAsStringAsync();
             var options = new JsonSerializerOptions()
