@@ -1,12 +1,19 @@
 using API_Formula1.Data;
+using API_Formula1.Mapping;
+using API_Formula1.Services;
+using API_Formula1.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddSwaggerGen();
+builder.Services.AddControllers();
+
+builder.Services.AddScoped<IF1Service, F1Service>();
+builder.Services.AddScoped<IMyDriversService, MyDriversService>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DbConnectionString")));
@@ -15,6 +22,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+//Documentation
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -22,5 +31,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.MapControllers();
 
 app.Run();
