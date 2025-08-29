@@ -83,10 +83,11 @@ The API will be available at:
 
 ### Drivers
 
-| Method | Endpoint                             | Description                                         |
-|--------|--------------------------------------|-----------------------------------------------------|
-| `GET` | `/GetDriversByYear/{year}`           | Get all real drivers who raced that year            |
-| `GET` | `/GetStandingsByRace/{year}/{round}` | Get championship standings by the round on tha year |
+| Method | Endpoint                             | Description                                                                                                                                |
+|--------|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| `GET` | `/GetDriversByYear/{year}`           | Get all real drivers who raced that year                                                                                                   |
+| `GET` | `/GetStandingsByRace/{year}/{round}` | Get championship standings by the round on tha year <br/>This endpoint is presenting an error when calculating the championship standings. |
+
 
 ### My Drivers (Custom Drivers)
 
