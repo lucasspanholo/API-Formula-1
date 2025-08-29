@@ -5,11 +5,12 @@ namespace API_Formula1.Data;
 
 public class AppDbContext : DbContext
 {
+    //Database Implementation
+    //PostgreSQL
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
     }
-
-    DbSet<Driver> Drivers { get; set; }
-    DbSet<Team> Teams { get; set; }
-    DbSet<Championship> Championships { get; set; }
+    public DbSet<Driver> Drivers { get; set; }
+    public DbSet<Championship> Championships { get; set; }
+    public DbSet<Race> Races { get; set; }
 }
